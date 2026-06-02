@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richard — Học bất cứ điều gì, chỉ từ một câu</title>
+<meta name="description" content="Gõ điều bạn muốn học, nhận ngay video ngắn dễ hiểu. Đăng ký dùng sớm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;1,500&display=swap&subset=vietnamese" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF5EB;--card:#FFFDF8;
+    --ink:#1B1714;--ink-soft:#544B41;--ink-faint:#8A7E70;
+    --accent:#FF5A36;--accent-deep:#E03F1C;--teal:#0F4F47;
+    --line:#E4D7C4;
+    --shadow:0 26px 64px -22px rgba(50,30,10,.30);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Be Vietnam Pro",sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .blob{position:fixed;border-radius:50%;filter:blur(10px);z-index:0}
+  .blob-1{width:480px;height:480px;background:radial-gradient(circle at 35% 35%,#FFD9B0,transparent 70%);top:-220px;right:-150px;opacity:.85}
+  .blob-2{width:420px;height:420px;background:radial-gradient(circle at 50% 50%,#FFB59E,transparent 70%);bottom:-220px;left:-170px;opacity:.5}
+
+  .wrap{position:relative;z-index:2;max-width:600px;margin:0 auto;padding:0 22px;text-align:center}
+
+  header{padding:30px 0 6px;display:flex;justify-content:center}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.16rem;letter-spacing:-.02em}
+  .logo{width:32px;height:32px;border-radius:9px;background:var(--ink);display:grid;place-items:center;flex:none}
+  .logo::before{content:"";border-style:solid;border-width:6px 0 6px 11px;border-color:transparent transparent transparent var(--accent);margin-left:3px}
+
+  .hero{padding:24px 0 18px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Lora",serif;font-style:italic;font-size:1rem;color:var(--accent-deep);background:rgba(255,90,54,.09);border:1.5px solid rgba(255,90,54,.22);padding:6px 15px;border-radius:999px;margin-bottom:24px}
+  h1{font-size:clamp(2.3rem,8.5vw,3.4rem);font-weight:800;line-height:1.04;letter-spacing:-.035em;margin-bottom:18px}
+  h1 .hl{position:relative;white-space:nowrap}
+  h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.07em;height:.32em;background:var(--accent);opacity:.26;z-index:-1;border-radius:3px}
+  .sub{font-size:1.1rem;color:var(--ink-soft);max-width:30rem;margin:0 auto 26px}
+
+  /* prompt demo */
+  .prompt{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;max-width:30rem;margin:0 auto 30px;box-shadow:0 10px 30px -16px rgba(50,30,10,.25);text-align:left}
+  .spark{flex:none;width:30px;height:30px;border-radius:8px;background:var(--teal);display:grid;place-items:center}
+  .spark svg{width:16px;height:16px}
+  #typed{font-size:1rem;font-weight:500;color:var(--ink);min-height:1.4em;flex:1}
+  .cursor{display:inline-block;width:2px;height:1.05em;background:var(--accent);margin-left:1px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .go{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:800}
+
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-bottom:34px}
+  .chip{font-size:.82rem;font-weight:600;color:var(--ink-soft);background:rgba(255,255,255,.6);border:1.5px solid var(--line);padding:7px 13px;border-radius:999px}
+
+  /* form */
+  .card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:30px 26px;box-shadow:var(--shadow);position:relative;text-align:left;max-width:30rem;margin:0 auto}
+  .card::before{content:"DÙNG SỚM · MIỄN PHÍ";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:6px 14px;border-radius:999px;white-space:nowrap}
+  .card h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin:6px 0 4px}
+  .card .lead{font-size:.92rem;color:var(--ink-soft);text-align:center;margin-bottom:20px}
+  .field{margin-bottom:13px}
+  label{display:block;font-size:.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+  input{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;transition:border-color .15s,box-shadow .15s}
+  input::placeholder{color:#B8AC9C}
+  input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,90,54,.13)}
+  .btn{width:100%;font-family:inherit;font-size:1.06rem;font-weight:700;color:#fff;background:var(--accent);border:none;border-radius:12px;padding:15px;cursor:pointer;margin-top:8px;transition:transform .12s,background .15s}
+  .btn:hover{background:var(--accent-deep);transform:translateY(-2px)}
+  .btn:disabled{opacity:.7;cursor:wait;transform:none}
+  .note{font-size:.76rem;color:var(--ink-faint);text-align:center;margin-top:13px;line-height:1.45}
+  .err{display:none;color:var(--accent-deep);font-size:.85rem;font-weight:600;text-align:center;margin-top:11px}
+  .hp{position:absolute;left:-9999px;opacity:0}
+
+  .success{display:none;text-align:center;padding:14px 6px}
+  .success .big{width:60px;height:60px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:1.7rem;margin:4px auto 16px;animation:pop .4s ease}
+  .success h2{font-size:1.45rem;margin-bottom:8px}
+  .success p{color:var(--ink-soft);font-size:.95rem;max-width:21rem;margin:0 auto}
+  @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+
+  footer{text-align:center;padding:34px 0 40px;color:var(--ink-faint);font-size:.84rem;margin-top:14px;border-top:1px solid var(--line)}
+
+  .rise{opacity:0;transform:translateY(22px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.26s}.d4{animation-delay:.37s}.d5{animation-delay:.48s}
+  @keyframes rise{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="wrap">
+    <header class="rise d1"><div class="brand"><span class="logo"></span>Richard</div></header>
+
+    <section class="hero">
+      <div class="eyebrow rise d1">Chào bạn đến từ TikTok</div>
+      <h1 class="rise d2">Gõ thứ bạn muốn học. <br>Nhận ngay <span class="hl">video</span> dễ hiểu.</h1>
+      <p class="sub rise d3">Bạn nhập một câu hỏi hay chủ đề bất kỳ — bọn mình biến nó thành video ngắn, dễ hiểu, đúng kiểu bạn hay xem. Tự học theo nhịp của bạn.</p>
+
+      <div class="prompt rise d3">
+        <span class="spark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.8L19 9.7l-4.1 2.9L16 18l-4-2.9L8 18l1.1-5.4L5 9.7l5.1-1.9z"/></svg></span>
+        <span id="typed"></span><span class="cursor"></span>
+        <span class="go">→</span>
+      </div>
+
+      <div class="chips rise d4">
+        <span class="chip">Gõ 1 câu → 1 video</span>
+        <span class="chip">Ngắn &amp; dễ hiểu</span>
+        <span class="chip">Học mọi lúc</span>
+      </div>
+
+      <div class="card rise d4">
+        <form id="leadForm">
+          <input type="hidden" name="access_key" value="f8ec4d51-8096-4365-93c6-5bb3d4892d99">
+          <input type="hidden" name="subject" value="Lead mới (TikTok) — danh sách chờ học qua prompt">
+          <input type="hidden" name="from_name" value="Richard Waitlist">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+          <h2>Đăng ký dùng sớm</h2>
+          <p class="lead">Vào danh sách chờ — bọn mình báo bạn ngay khi mở.</p>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="ban@email.com" required>
+          </div>
+          <div class="field">
+            <label for="sdt">Số điện thoại</label>
+            <input id="sdt" name="Số điện thoại" type="tel" inputmode="numeric" placeholder="09xx xxx xxx" required>
+          </div>
+          <div class="field">
+            <label for="hoc">Bạn muốn học gì nhất? <span style="font-weight:400;color:var(--ink-faint)">(không bắt buộc)</span></label>
+            <input id="hoc" name="Muốn học gì" type="text" placeholder="VD: đạo hàm, thì hiện tại hoàn thành, định luật Newton…">
+          </div>
+
+          <button class="btn" type="submit">Giữ chỗ cho mình</button>
+          <p class="err" id="err">Có lỗi rồi, bạn thử lại giúp nhé.</p>
+          <p class="note">Bọn mình chỉ dùng thông tin để báo bạn khi ra mắt — không spam.</p>
+        </form>
+
+        <div class="success" id="success">
+          <div class="big">✓</div>
+          <h2>Bạn đã vào danh sách chờ!</h2>
+          <p>Bọn mình sẽ nhắn bạn ngay khi mở cho dùng. Hẹn gặp lại nhé!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>© <span id="yr"></span> Richard · Học bất cứ điều gì, chỉ từ một câu</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // typewriter demo
+  const prompts = [
+    "Giải thích đạo hàm thật dễ hiểu",
+    "Thì hiện tại hoàn thành dùng khi nào?",
+    "Định luật Newton thứ 2 là gì?",
+    "Cách cân bằng phương trình hóa học",
+    "Vì sao bầu trời lại màu xanh?"
+  ];
+  const el = document.getElementById('typed');
+  let pi=0, ci=0, deleting=false;
+  function tick(){
+    const word = prompts[pi];
+    el.textContent = word.slice(0, ci);
+    if(!deleting && ci < word.length){ ci++; setTimeout(tick, 55); }
+    else if(!deleting && ci === word.length){ deleting=true; setTimeout(tick, 1500); }
+    else if(deleting && ci > 0){ ci--; setTimeout(tick, 28); }
+    else { deleting=false; pi=(pi+1)%prompts.length; setTimeout(tick, 350); }
+  }
+  tick();
+
+  // form submit -> Web3Forms
+  const form = document.getElementById('leadForm');
+  const err  = document.getElementById('err');
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    err.style.display='none';
+    const btn = form.querySelector('button[type=submit]');
+    const original = btn.textContent;
+    btn.disabled=true; btn.textContent='Đang gửi…';
+    try{
+      const res = await fetch('https://api.web3forms.com/submit',{
+        method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form)
+      });
+      const data = await res.json();
+      if(data.success){
+        form.style.display='none';
+        document.getElementById('success').style.display='block';
+      } else { throw new Error(data.message||'fail'); }
+    }catch(ex){
+      btn.disabled=false; btn.textContent=original;
+      err.style.display='block';
+    }
+  });
+</script>
+</body>
+</html>
