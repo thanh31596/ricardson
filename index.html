@@ -26,10 +26,15 @@
 
   .wrap{position:relative;z-index:2;max-width:600px;margin:0 auto;padding:0 22px;text-align:center}
 
-  header{padding:30px 0 6px;display:flex;justify-content:center}
+  header{padding:26px 0 6px;display:flex;justify-content:space-between;align-items:center}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.16rem;letter-spacing:-.02em}
   .logo{width:32px;height:32px;border-radius:9px;background:var(--ink);display:grid;place-items:center;flex:none}
   .logo::before{content:"";border-style:solid;border-width:6px 0 6px 11px;border-color:transparent transparent transparent var(--accent);margin-left:3px}
+
+  .langs{display:flex;gap:4px}
+  .lang-btn{font-family:inherit;font-size:.78rem;font-weight:700;color:var(--ink-soft);background:transparent;border:1.5px solid var(--line);padding:5px 11px;border-radius:999px;cursor:pointer;transition:all .15s}
+  .lang-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .lang-btn:hover:not(.active){border-color:var(--accent);color:var(--accent)}
 
   .hero{padding:24px 0 18px}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Lora",serif;font-style:italic;font-size:1rem;color:var(--accent-deep);background:rgba(255,90,54,.09);border:1.5px solid rgba(255,90,54,.22);padding:6px 15px;border-radius:999px;margin-bottom:24px}
@@ -38,7 +43,6 @@
   h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.07em;height:.32em;background:var(--accent);opacity:.26;z-index:-1;border-radius:3px}
   .sub{font-size:1.1rem;color:var(--ink-soft);max-width:30rem;margin:0 auto 26px}
 
-  /* prompt demo */
   .prompt{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;max-width:30rem;margin:0 auto 30px;box-shadow:0 10px 30px -16px rgba(50,30,10,.25);text-align:left}
   .spark{flex:none;width:30px;height:30px;border-radius:8px;background:var(--teal);display:grid;place-items:center}
   .spark svg{width:16px;height:16px}
@@ -50,13 +54,13 @@
   .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-bottom:34px}
   .chip{font-size:.82rem;font-weight:600;color:var(--ink-soft);background:rgba(255,255,255,.6);border:1.5px solid var(--line);padding:7px 13px;border-radius:999px}
 
-  /* form */
   .card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:30px 26px;box-shadow:var(--shadow);position:relative;text-align:left;max-width:30rem;margin:0 auto}
-  .card::before{content:"DÙNG SỚM · MIỄN PHÍ";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:6px 14px;border-radius:999px;white-space:nowrap}
+  .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:6px 14px;border-radius:999px;white-space:nowrap}
   .card h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-align:center;margin:6px 0 4px}
   .card .lead{font-size:.92rem;color:var(--ink-soft);text-align:center;margin-bottom:20px}
   .field{margin-bottom:13px}
   label{display:block;font-size:.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+  .opt{font-weight:400;color:var(--ink-faint)}
   input{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;transition:border-color .15s,box-shadow .15s}
   input::placeholder{color:#B8AC9C}
   input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,90,54,.13)}
@@ -76,7 +80,7 @@
   footer{text-align:center;padding:34px 0 40px;color:var(--ink-faint);font-size:.84rem;margin-top:14px;border-top:1px solid var(--line)}
 
   .rise{opacity:0;transform:translateY(22px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
-  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.26s}.d4{animation-delay:.37s}.d5{animation-delay:.48s}
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.26s}.d4{animation-delay:.37s}
   @keyframes rise{to{opacity:1;transform:none}}
 </style>
 </head>
@@ -85,12 +89,18 @@
   <div class="blob blob-2"></div>
 
   <div class="wrap">
-    <header class="rise d1"><div class="brand"><span class="logo"></span>Richard</div></header>
+    <header class="rise d1">
+      <div class="brand"><span class="logo"></span>Richard</div>
+      <div class="langs">
+        <button class="lang-btn active" data-lang="vi">VI</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </header>
 
     <section class="hero">
-      <div class="eyebrow rise d1">Chào bạn đến từ TikTok</div>
-      <h1 class="rise d2">Gõ thứ bạn muốn học. <br>Nhận ngay <span class="hl">video</span> dễ hiểu.</h1>
-      <p class="sub rise d3">Bạn nhập một câu hỏi hay chủ đề bất kỳ — bọn mình biến nó thành video ngắn, dễ hiểu, đúng kiểu bạn hay xem. Tự học theo nhịp của bạn.</p>
+      <div class="eyebrow rise d1" data-i18n="eyebrow">Chào bạn đến từ TikTok</div>
+      <h1 class="rise d2" data-i18n-html="h1">Gõ thứ bạn muốn học. <br>Nhận ngay <span class="hl">video</span> dễ hiểu.</h1>
+      <p class="sub rise d3" data-i18n="sub">Bạn nhập một câu hỏi hay chủ đề bất kỳ — bọn mình biến nó thành video ngắn, dễ hiểu, đúng kiểu bạn hay xem. Tự học theo nhịp của bạn.</p>
 
       <div class="prompt rise d3">
         <span class="spark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.8L19 9.7l-4.1 2.9L16 18l-4-2.9L8 18l1.1-5.4L5 9.7l5.1-1.9z"/></svg></span>
@@ -99,94 +109,169 @@
       </div>
 
       <div class="chips rise d4">
-        <span class="chip">Gõ 1 câu → 1 video</span>
-        <span class="chip">Ngắn &amp; dễ hiểu</span>
-        <span class="chip">Học mọi lúc</span>
+        <span class="chip" data-i18n="chip1">Gõ 1 câu → 1 video</span>
+        <span class="chip" data-i18n="chip2">Ngắn &amp; dễ hiểu</span>
+        <span class="chip" data-i18n="chip3">Học mọi lúc</span>
       </div>
 
       <div class="card rise d4">
+        <span class="badge" data-i18n="badge">DÙNG SỚM · MIỄN PHÍ</span>
         <form id="leadForm">
           <input type="hidden" name="access_key" value="f8ec4d51-8096-4365-93c6-5bb3d4892d99">
-          <input type="hidden" name="subject" value="Lead mới (TikTok) — danh sách chờ học qua prompt">
+          <input type="hidden" name="subject" value="Lead mới (TikTok) — danh sách chờ Richard">
           <input type="hidden" name="from_name" value="Richard Waitlist">
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
 
-          <h2>Đăng ký dùng sớm</h2>
-          <p class="lead">Vào danh sách chờ — bọn mình báo bạn ngay khi mở.</p>
+          <h2 data-i18n="formTitle">Đăng ký dùng sớm</h2>
+          <p class="lead" data-i18n="formLead">Vào danh sách chờ — bọn mình báo bạn ngay khi mở.</p>
 
           <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="ban@email.com" required>
+            <label for="email" data-i18n="labelEmail">Email</label>
+            <input id="email" name="email" type="email" data-i18n-ph="phEmail" placeholder="ban@email.com" required>
           </div>
           <div class="field">
-            <label for="sdt">Số điện thoại</label>
-            <input id="sdt" name="Số điện thoại" type="tel" inputmode="numeric" placeholder="09xx xxx xxx" required>
+            <label for="sdt" data-i18n="labelPhone">Số điện thoại</label>
+            <input id="sdt" name="Số điện thoại" type="tel" inputmode="numeric" data-i18n-ph="phPhone" placeholder="09xx xxx xxx" required>
           </div>
           <div class="field">
-            <label for="hoc">Bạn muốn học gì nhất? <span style="font-weight:400;color:var(--ink-faint)">(không bắt buộc)</span></label>
-            <input id="hoc" name="Muốn học gì" type="text" placeholder="VD: đạo hàm, thì hiện tại hoàn thành, định luật Newton…">
+            <label for="hoc" data-i18n-html="labelLearn">Bạn muốn học gì nhất? <span class="opt">(không bắt buộc)</span></label>
+            <input id="hoc" name="Muốn học gì" type="text" data-i18n-ph="phLearn" placeholder="VD: đạo hàm, thì hiện tại hoàn thành, định luật Newton…">
           </div>
 
-          <button class="btn" type="submit">Giữ chỗ cho mình</button>
-          <p class="err" id="err">Có lỗi rồi, bạn thử lại giúp nhé.</p>
-          <p class="note">Bọn mình chỉ dùng thông tin để báo bạn khi ra mắt — không spam.</p>
+          <button class="btn" type="submit" data-i18n="btn">Giữ chỗ cho mình</button>
+          <p class="err" id="err" data-i18n="err">Có lỗi rồi, bạn thử lại giúp nhé.</p>
+          <p class="note" data-i18n="note">Bọn mình chỉ dùng thông tin để báo bạn khi ra mắt — không spam.</p>
         </form>
 
         <div class="success" id="success">
           <div class="big">✓</div>
-          <h2>Bạn đã vào danh sách chờ!</h2>
-          <p>Bọn mình sẽ nhắn bạn ngay khi mở cho dùng. Hẹn gặp lại nhé!</p>
+          <h2 data-i18n="successTitle">Bạn đã vào danh sách chờ!</h2>
+          <p data-i18n="successP">Bọn mình sẽ nhắn bạn ngay khi mở cho dùng. Hẹn gặp lại nhé!</p>
         </div>
       </div>
     </section>
   </div>
 
-  <footer>© <span id="yr"></span> Richard · Học bất cứ điều gì, chỉ từ một câu</footer>
+  <footer>© <span id="yr"></span> <span data-i18n="footer">Richard · Học bất cứ điều gì, chỉ từ một câu</span></footer>
 
 <script>
+  const I18N = {
+    vi: {
+      title: "Richard — Học bất cứ điều gì, chỉ từ một câu",
+      eyebrow: "Chào bạn đến từ TikTok",
+      h1: "Gõ thứ bạn muốn học. <br>Nhận ngay <span class='hl'>video</span> dễ hiểu.",
+      sub: "Bạn nhập một câu hỏi hay chủ đề bất kỳ — bọn mình biến nó thành video ngắn, dễ hiểu, đúng kiểu bạn hay xem. Tự học theo nhịp của bạn.",
+      chip1: "Gõ 1 câu → 1 video",
+      chip2: "Ngắn & dễ hiểu",
+      chip3: "Học mọi lúc",
+      badge: "DÙNG SỚM · MIỄN PHÍ",
+      formTitle: "Đăng ký dùng sớm",
+      formLead: "Vào danh sách chờ — bọn mình báo bạn ngay khi mở.",
+      labelEmail: "Email",
+      phEmail: "ban@email.com",
+      labelPhone: "Số điện thoại",
+      phPhone: "09xx xxx xxx",
+      labelLearn: "Bạn muốn học gì nhất? <span class='opt'>(không bắt buộc)</span>",
+      phLearn: "VD: đạo hàm, thì hiện tại hoàn thành, định luật Newton…",
+      btn: "Giữ chỗ cho mình",
+      err: "Có lỗi rồi, bạn thử lại giúp nhé.",
+      note: "Bọn mình chỉ dùng thông tin để báo bạn khi ra mắt — không spam.",
+      successTitle: "Bạn đã vào danh sách chờ!",
+      successP: "Bọn mình sẽ nhắn bạn ngay khi mở cho dùng. Hẹn gặp lại nhé!",
+      footer: "Richard · Học bất cứ điều gì, chỉ từ một câu",
+      prompts: [
+        "Giải thích đạo hàm thật dễ hiểu",
+        "Thì hiện tại hoàn thành dùng khi nào?",
+        "Định luật Newton thứ 2 là gì?",
+        "Cách cân bằng phương trình hóa học",
+        "Vì sao bầu trời lại màu xanh?"
+      ]
+    },
+    en: {
+      title: "Richard — Learn anything, from a single line",
+      eyebrow: "Hey there, from TikTok",
+      h1: "Type what you want to learn.<br>Get a <span class='hl'>video</span> that makes sense.",
+      sub: "Type any question or topic — we turn it into a short, easy-to-follow video, just like the ones you love watching. Learn at your own pace.",
+      chip1: "One line → one video",
+      chip2: "Short & clear",
+      chip3: "Learn anytime",
+      badge: "EARLY ACCESS · FREE",
+      formTitle: "Get early access",
+      formLead: "Join the waitlist — we'll ping you the moment it opens.",
+      labelEmail: "Email",
+      phEmail: "you@email.com",
+      labelPhone: "Phone number",
+      phPhone: "Your phone number",
+      labelLearn: "What do you most want to learn? <span class='opt'>(optional)</span>",
+      phLearn: "e.g. derivatives, present perfect, Newton's laws…",
+      btn: "Save my spot",
+      err: "Something went wrong — please try again.",
+      note: "We'll only use your info to notify you at launch — no spam.",
+      successTitle: "You're on the waitlist!",
+      successP: "We'll message you the moment it's ready. See you soon!",
+      footer: "Richard · Learn anything, from a single line",
+      prompts: [
+        "Explain derivatives simply",
+        "When do I use the present perfect?",
+        "What's Newton's second law?",
+        "How to balance chemical equations",
+        "Why is the sky blue?"
+      ]
+    }
+  };
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // typewriter demo
-  const prompts = [
-    "Giải thích đạo hàm thật dễ hiểu",
-    "Thì hiện tại hoàn thành dùng khi nào?",
-    "Định luật Newton thứ 2 là gì?",
-    "Cách cân bằng phương trình hóa học",
-    "Vì sao bầu trời lại màu xanh?"
-  ];
-  const el = document.getElementById('typed');
-  let pi=0, ci=0, deleting=false;
+  // ---- typewriter (uses global state so language can swap) ----
+  let prompts = I18N.vi.prompts, pi = 0, ci = 0, deleting = false;
+  const typedEl = document.getElementById('typed');
   function tick(){
-    const word = prompts[pi];
-    el.textContent = word.slice(0, ci);
+    const word = prompts[pi] || "";
+    typedEl.textContent = word.slice(0, ci);
     if(!deleting && ci < word.length){ ci++; setTimeout(tick, 55); }
-    else if(!deleting && ci === word.length){ deleting=true; setTimeout(tick, 1500); }
+    else if(!deleting && ci === word.length){ deleting = true; setTimeout(tick, 1500); }
     else if(deleting && ci > 0){ ci--; setTimeout(tick, 28); }
-    else { deleting=false; pi=(pi+1)%prompts.length; setTimeout(tick, 350); }
+    else { deleting = false; pi = (pi + 1) % prompts.length; setTimeout(tick, 350); }
   }
+
+  // ---- language switching ----
+  function setLang(lang){
+    const t = I18N[lang];
+    document.documentElement.lang = lang;
+    document.title = t.title;
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t[el.dataset.i18n]; });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t[el.dataset.i18nHtml]; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t[el.dataset.i18nPh]; });
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    // restart typewriter with new prompts
+    prompts = t.prompts; pi = 0; ci = 0; deleting = false; typedEl.textContent = "";
+  }
+  document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+  setLang('vi');
   tick();
 
-  // form submit -> Web3Forms
+  // ---- form submit -> Web3Forms ----
   const form = document.getElementById('leadForm');
   const err  = document.getElementById('err');
-  form.addEventListener('submit', async (e)=>{
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    err.style.display='none';
+    err.style.display = 'none';
     const btn = form.querySelector('button[type=submit]');
     const original = btn.textContent;
-    btn.disabled=true; btn.textContent='Đang gửi…';
+    btn.disabled = true; btn.textContent = '…';
     try{
-      const res = await fetch('https://api.web3forms.com/submit',{
+      const res = await fetch('https://api.web3forms.com/submit', {
         method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form)
       });
       const data = await res.json();
       if(data.success){
-        form.style.display='none';
-        document.getElementById('success').style.display='block';
-      } else { throw new Error(data.message||'fail'); }
+        form.style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+      } else { throw new Error(data.message || 'fail'); }
     }catch(ex){
-      btn.disabled=false; btn.textContent=original;
-      err.style.display='block';
+      btn.disabled = false; btn.textContent = original;
+      err.style.display = 'block';
     }
   });
 </script>
