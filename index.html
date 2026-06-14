@@ -409,6 +409,7 @@ const I18N = {
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 
+
 /* ============================================================
    SAMPLE VIDEOS — ADD YOUR VIDEOS HERE
    1) MP4 (Remotion): { src:"videos/x.mp4", poster:"videos/x.jpg", vi:"...", en:"..." }
@@ -416,13 +417,12 @@ document.getElementById('yr').textContent = new Date().getFullYear();
    3) Leave empty  => "Coming soon" placeholder card
    ============================================================ */
 const SAMPLE_VIDEOS = [
-  { vi: "Đạo hàm là gì?", en: "What is a derivative?" },
-  { vi: "Định luật Newton thứ 2", en: "Newton's second law" },
-  { vi: "Vì sao bầu trời màu xanh?", en: "Why is the sky blue?" },
-  { vi: "Thì hiện tại hoàn thành", en: "Present perfect tense" },
-  { vi: "Cân bằng phương trình hoá học", en: "Balancing equations" }
+  { youtube:"MBXHQVmzHYw", vi: "Video giới thiệu bản thân?", en: "Self Introduction Resume" },
+  { youtube:"C2x-4ztLaqg", vi: "Định luật Newton thứ 2", en: "Newton's second law" },
+  { youtube:"C2x-4ztLaqg", vi: "Vì sao bầu trời màu xanh?", en: "Why is the sky blue?" },
+  { youtube:"1oMapsMr878", vi: "Thì hiện tại hoàn thành", en: "Present perfect tense" },
+  { youtube:"fyHj-dhj6KA", vi: "Cân bằng phương trình hoá học", en: "Balancing equations" }
 ];
-
 function renderCarousel(){
   const wrap = document.getElementById('carousel');
   wrap.innerHTML = '';
